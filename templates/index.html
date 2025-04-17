@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SkinAI - Skin Cancer Detection</title>
+
+  <!-- Correct way to link CSS and favicon -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.jpeg') }}">
+</head>
+
+<body>
+  
+
+  <div class="container">
+    <h1 class="tagline">🌿 SkinAI: Early Detection. Lifelong Protection.</h1>
+  
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="SkinAI Logo" class="logo">
+  
+    <div class="advice-box" id="adviceBox">Loading advice...</div>
+  
+    <div style="margin-top: 20px;">
+      <strong>Trust Level Achieved:</strong> ⭐ {{ avg_rating }}/5
+    </div>
+  
+    <a href="{{ url_for('predict') }}">
+      <button class="go-btn">🧪 Try Skin Check</button>
+    </a>
+  </div>
+  
+
+  <!-- Correct JS path -->
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

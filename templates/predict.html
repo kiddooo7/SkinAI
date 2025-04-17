@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SkinAI - Predict</title>
+
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="{{ url_for('static', filename='favicon.jpeg') }}" type="image/png">
+
+  <!-- Custom Animations -->
+  <style>
+    .animate-blob {
+      animation: blob 8s infinite;
+    }
+    @keyframes blob {
+      0%, 100% {
+        transform: translate(0px, 0px) scale(1);
+      }
+      33% {
+        transform: translate(30px, -20px) scale(1.1);
+      }
+      66% {
+        transform: translate(-20px, 20px) scale(0.9);
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen font-sans">
+
+  <!-- Header -->
+  <header class="flex items-center justify-center p-6 mb-6 gap-3">
+    <a href="{{ url_for('index') }}" title="Go Home">
+      <img src="{{ url_for('static', filename='favicon.jpeg') }}" alt="Logo" class="h-12 w-12 rounded-full hover:scale-110 transition duration-300 shadow-md" />
+    </a>
+    <h1 class="text-3xl font-bold text-blue-800">SkinAI</h1>
+  </header>
+
+  <!-- Main Section -->
+  <main class="flex flex-col items-center px-4">
+    <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-2xl text-center transition-all duration-300 relative overflow-hidden">
+
+      <!-- Decorative Blobs -->
+      <div class="absolute top-0 right-0 w-40 h-40 bg-purple-200 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-2000"></div>
+      <div class="absolute bottom-0 left-0 w-40 h-40 bg-blue-200 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob"></div>
+
+      <!-- Title & Description -->
+      <h2 class="text-2xl font-bold text-blue-800 mb-2">Upload a Skin Image</h2>
+      <p class="text-gray-600 mb-6">Let SkinAI analyze your image and help you identify potential skin conditions. Your health matters!</p>
+
+      <!-- Upload Button -->
+      <input id="imageInput" type="file" accept="image/*" class="hidden" onchange="handleUpload(this)" />
+      <label for="imageInput" id="uploadLabel" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg cursor-pointer hover:bg-blue-700 transition">
+        Upload Image
+      </label>
+
+      <!-- Image Preview -->
+      <div id="previewContainer" class="hidden mt-6">
+        <img id="preview" src="#" alt="Preview" class="mx-auto max-h-64 rounded-lg border border-gray-300 shadow mb-4 transition-transform duration-300 hover:scale-105" />
+      </div>
+
+      <!-- Predict Button -->
+      <button id="predictButton" onclick="predict()" class="hidden bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition">
+        Predict
+      </button>
+
+      <!-- Loading Indicator -->
+      <div id="loadingIndicator" class="hidden flex flex-col items-center mt-4">
+        <div class="animate-spin text-4xl">⏳</div>
+        <p class="text-sm text-gray-600 mt-2">Be patient, we are running</p>
+      </div>
+
+      <!-- Result Section -->
+      <div id="resultSection" class="hidden mt-6 text-left space-y-4">
+        <h2 class="text-xl font-semibold text-purple-700">Prediction: <span id="prediction" class="text-gray-800"></span></h2>
+
+        <div>
+          <h3 class="font-semibold text-gray-700">Causes:</h3>
+          <ul class="list-disc list-inside text-gray-600" id="causes"></ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-700">Precautions:</h3>
+          <ul class="list-disc list-inside text-gray-600" id="precautions"></ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-700">Next Steps:</h3>
+          <ul class="list-disc list-inside text-gray-600" id="nextSteps"></ul>
+        </div>
+      </div>
+
+      <!-- Upload Another -->
+<button 
+id="uploadAnother" 
+onclick="resetUpload()" 
+class="hidden mt-6 bg-gray-700 text-white px-5 py-2 rounded-lg hover:bg-gray-800 transition"
+>
+Upload Another Image
+</button>
+
+
+      <!-- View History Button -->
+      <button id="viewHistoryButton" onclick="toggleHistory()" class="hidden mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
+        View History
+      </button>
+
+      <!-- Download Result -->
+      <button id="downloadResult" onclick="downloadResult()" class="hidden mt-3 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">
+        Download Result
+      </button>
+
+      <!-- Rating Stars -->
+      <div id="ratingSection" class="hidden mt-4 text-yellow-500 text-2xl">
+        <p class="text-sm text-gray-600 mb-1">Rate your experience:</p>
+        <div id="stars" class="flex justify-center space-x-1 cursor-pointer">
+          <span onclick="rate(1)">★</span>
+          <span onclick="rate(2)">★</span>
+          <span onclick="rate(3)">★</span>
+          <span onclick="rate(4)">★</span>
+          <span onclick="rate(5)">★</span>
+        </div>
+      </div>
+
+      <!-- History Section -->
+      <div id="historySection" class="hidden mt-6">
+        <h2 class="text-xl font-semibold mb-4 text-blue-800">Prediction History (Last 10)</h2>
+        <div id="historyList" class="space-y-4"></div>
+        <button onclick="clearHistory()" class="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">
+          Clear History
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="{{ url_for('static', filename='predict.js') }}"></script>
+</body>
+</html>
