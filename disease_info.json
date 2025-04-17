@@ -1,0 +1,121 @@
+{
+  "actinic keratosis": {
+    "causes": [
+      "Prolonged exposure to ultraviolet (UV) radiation from the sun or tanning beds",
+      "Weakened immune system",
+      "Fair skin tone"
+    ],
+    "precautions": [
+      "Use broad-spectrum sunscreen daily",
+      "Avoid direct sun exposure during peak hours",
+      "Wear protective clothing and hats outdoors"
+    ],
+    "nextSteps": [
+      "Consult a dermatologist for examination",
+      "Consider a skin biopsy to rule out progression to skin cancer",
+      "Follow prescribed treatments like cryotherapy or topical creams"
+    ]
+  },
+  "basal cell carcinoma": {
+    "causes": [
+      "Cumulative sun exposure and UV radiation",
+      "Genetic predisposition",
+      "History of frequent sunburns"
+    ],
+    "precautions": [
+      "Regular skin checks for new or changing spots",
+      "Avoid tanning beds",
+      "Apply sunscreen with SPF 30 or higher"
+    ],
+    "nextSteps": [
+      "Visit a dermatologist for diagnosis and possible biopsy",
+      "Discuss treatment options like excision or Mohs surgery",
+      "Monitor for recurrence"
+    ]
+  },
+  "pigmented benign keratosis": {
+    "causes": [
+      "Aging skin",
+      "Accumulated sun exposure",
+      "Genetic factors"
+    ],
+    "precautions": [
+      "Use moisturizers regularly",
+      "Protect skin from UV rays",
+      "Avoid picking or scratching lesions"
+    ],
+    "nextSteps": [
+      "Dermatological evaluation for cosmetic or diagnostic purposes",
+      "Cryotherapy or curettage if removal is needed",
+      "Monitor to differentiate from malignant lesions"
+    ]
+  },
+  "dermatofibroma": {
+    "causes": [
+      "Minor skin injuries or insect bites",
+      "Abnormal reaction to trauma in the skin",
+      "Genetic predisposition"
+    ],
+    "precautions": [
+      "Avoid scratching or injuring existing skin lesions",
+      "Maintain good skin hygiene",
+      "Moisturize regularly to prevent dryness"
+    ],
+    "nextSteps": [
+      "Consult a dermatologist if it grows or changes",
+      "Surgical removal if painful or cosmetically concerning",
+      "Routine observation if asymptomatic"
+    ]
+  },
+  "melanoma": {
+    "causes": [
+      "Intense, intermittent UV exposure",
+      "Genetic mutations in melanocytes",
+      "Family history of melanoma"
+    ],
+    "precautions": [
+      "Perform monthly skin self-exams",
+      "Avoid sunburns and unprotected exposure",
+      "Use broad-spectrum sunscreen daily"
+    ],
+    "nextSteps": [
+      "Seek urgent dermatologist consultation",
+      "Undergo biopsy for confirmation",
+      "Discuss staging and treatment plan if diagnosed"
+    ]
+  },
+  "nevus": {
+    "causes": [
+      "Benign growth of melanocytes",
+      "Congenital skin development",
+      "Hormonal changes during puberty or pregnancy"
+    ],
+    "precautions": [
+      "Avoid irritation or repeated trauma to moles",
+      "Monitor for ABCDE changes (Asymmetry, Border, Color, Diameter, Evolving)",
+      "Photograph moles to track changes over time"
+    ],
+    "nextSteps": [
+      "Routine skin checkups with a dermatologist",
+      "Mole mapping for high-risk individuals",
+      "Biopsy if unusual changes are observed"
+    ]
+  },
+  "vascular lesion": {
+    "causes": [
+      "Congenital blood vessel abnormalities",
+      "Aging skin or hormonal changes",
+      "Injury or inflammation"
+    ],
+    "precautions": [
+      "Avoid trauma to the affected area",
+      "Use gentle skincare products",
+      "Protect from excessive sun exposure"
+    ],
+    "nextSteps": [
+      "Dermatologist evaluation to rule out complications",
+      "Laser therapy or sclerotherapy if needed",
+      "Monitor size and appearance"
+    ]
+  }
+}
