@@ -47,3 +47,4 @@ SkinAI is a deep learning-powered web application that classifies skin lesions i
    ```bash
    git clone https://github.com/YOUR_USERNAME/SkinAI.git
    cd SkinAI
+2. Add your model file in the "models" folder 
